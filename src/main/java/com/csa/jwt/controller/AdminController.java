@@ -45,6 +45,25 @@ public class AdminController {
             return Result.error();
         }
     }
+
+    /**
+     * 添加了拦截器后，代码去冗余后更加简洁，相当于 public Result licai(@RequestHeader HttpHeaders httpHeaders)
+     * @param
+     * @return
+     */
+    @GetMapping("licai1")
+    public Result licaiInterceptor() {
+
+
+        Result ok = Result.ok();
+        ok.message("支付宝--理财");
+        Map<String, Object> map = new HashMap<>();
+        map.put("总资产","10000");
+        map.put("昨日收益","+0.53");
+        ok.data(map);
+        return ok;
+
+    }
     @GetMapping("souye")
     public Result getUserInfo(@RequestHeader HttpHeaders httpHeaders) {
         //首先判断header里面是否有token，以及这个token是否合法
