@@ -32,9 +32,9 @@ public class AdminController {
             Result ok = Result.ok();
             //构建token
             Map<String, Object> map = new HashMap<>();
-//            String jwtToken = JwtUtils.getJwtToken(userId, username);
-//            map.put("token",jwtToken);
-            map.put("token","token---");
+            String jwtToken = JwtUtils.getJwtToken(userId, username);
+            map.put("token",jwtToken);
+//            map.put("token","token---");
             map.put("首页","souye");
             map.put("理财","licai");
             map.put("口碑","koubei");
@@ -94,7 +94,7 @@ public class AdminController {
 //                error.message("token异常");
 //                return error;
 //            }
-            if (JwtUtils.checkToken(token)) {
+            if (!JwtUtils.checkToken(token)) {
                 Result error = Result.error();
                 error.code(20003);
                 error.message("token异常");
